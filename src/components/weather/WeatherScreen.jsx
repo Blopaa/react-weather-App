@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import getDataEvery24h from "../../helpers/getDataEvery24h";
 import useFetch from "../../hooks/useFetch";
@@ -16,11 +16,11 @@ const WeatherScreen = () => {
     return !loading && getDataEvery24h(data);
   }, [data, loading]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const weatherData = dataop();
     setData(weatherData);
     console.log(data);
-  }, [dataop]);
+  }, [dataop, data]);
 
   const handleSearch = (city) => {
     setState(city);
@@ -29,9 +29,12 @@ const WeatherScreen = () => {
   return (
     <div>
       <SearchInput handleSearch={handleSearch} />
-      {newdata && newdata.map((d) => (
-          <WeatherCard key={d.dt}/>
-      ))}
+      {newdata &&
+        newdata.map((d) => {
+          return(
+            <WeatherCard key={d.dt} dateP={d.dt_txt} cityName={data.city.name} data={d}/>
+          )
+        })}
     </div>
   );
 };
