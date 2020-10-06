@@ -3,13 +3,11 @@ import moment from "moment";
 import Icons from "../icons/Icons";
 
 const WeatherCard = ({ dateP, cityName, data }) => {
-  console.log(data);
-
   const clime = data.weather[0].main;
 
   const weatherDate = moment(dateP);
 
-  //   console.log(weatherDate);
+  console.log(data);
 
   return (
     <div className="weather__card-container">
@@ -22,12 +20,12 @@ const WeatherCard = ({ dateP, cityName, data }) => {
       </div>
       <div className="weather__card-Data">
         <ul>
-          <li>
+          <li className="weather__card-Data-clime">
             <Icons clime={clime} /> {clime}
           </li>
-          <li>media</li>
-          <li>temperatura max</li>
-          <li>temperatura min</li>
+          <li>{data.main.temp} ºC</li>
+          <li>pressure: {data.main.pressure} Pa</li>
+          <li>humidity: {data.main.humidity} %</li>
         </ul>
       </div>
     </div>

@@ -19,7 +19,6 @@ const WeatherScreen = () => {
   useEffect(() => {
     const weatherData = dataop();
     setData(weatherData);
-    console.log(data);
   }, [dataop, data]);
 
   const handleSearch = (city) => {

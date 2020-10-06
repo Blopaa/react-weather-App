@@ -14,7 +14,7 @@ const Icons = ({ clime }) => {
         return <Clear />;
     }
   };
-  return <div className="icon__container">{weatherIcon(clime)}</div>;
+  return <div style={{ marginRight: "25px" }}>{weatherIcon(clime)}</div>;
 };
 
 export default Icons;

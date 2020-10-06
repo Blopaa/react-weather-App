@@ -1,6 +1,6 @@
 .weather__card-container {
   display: flex;
-  width: 349.46px;
+  width: 450px;
   height: 202px;
   margin: 10px;
   background: linear-gradient(109.49deg, $dark-secondary -14.02%, $secondary 125.75%);
@@ -37,4 +37,9 @@
     line-height: 16px;
     margin-bottom: 15px;
   }
+}
+
+.weather__card-Data-clime{
+    display: inline-flex;
+    align-items: center;
 }
