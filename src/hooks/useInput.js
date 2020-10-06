@@ -1,19 +1,20 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const useInput = (initialState = {}) => {
-    const [values, setValues] = useState(initialState);
+  const [values, setValues] = useState(initialState);
 
-    const handleInputChange = ({ target }) => {
+  const handleInputChange = ({ target }) => {
+    setValues({
+      ...values,
+      [target.name]: target.value,
+    });
+  };
 
-        setValues({
-            ...values,
-            [ target.name ]: target.value
-        });
+  const reset = () => {
+    setValues(initialState);
+  };
 
-    }
+  return [values, handleInputChange, reset];
+};
 
-    return [ values, handleInputChange ];
-
-}
-
-export default useInput
+export default useInput;
