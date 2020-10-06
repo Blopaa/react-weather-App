@@ -3,6 +3,7 @@ import { useState } from "react";
 import getDataEvery24h from "../../helpers/getDataEvery24h";
 import getDataFirstDay from "../../helpers/getDataFirstDay";
 import useFetch from "../../hooks/useFetch";
+import Navbar from "../header/Navbar";
 import { CityContext } from "./CityContext";
 import WeatherCard from "./WeatherCard";
 import WeatherFirstDay from "./WeatherFirstDay";
@@ -35,8 +36,9 @@ const WeatherScreen = () => {
 
   return (
     <div>
+      <Navbar/>
+      <WeatherFirstDay day={FirstDay}/>
       <div className="weather__cards-container">
-        <WeatherFirstDay day={FirstDay}/>
         {newdata &&
           newdata.map((d) => {
             return (

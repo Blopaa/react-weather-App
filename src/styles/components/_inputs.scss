@@ -1,0 +1,14 @@
+.input__default{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 50px;
+    transition: all .3s;
+    width: 30vh;
+    height: 30px;
+
+    &:focus{
+        background-color: $primary;
+        box-shadow: 0px 4px 10px rgba(33, 62, 59, 0.35);
+    }
+}

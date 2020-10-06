@@ -7,8 +7,6 @@ const WeatherCard = ({ dateP, cityName, data }) => {
 
   const weatherDate = moment(dateP);
 
-  console.log(data);
-
   return (
     <div className="weather__card-container">
       <div className="weather__card-time-place-container mt-1 mb-1">

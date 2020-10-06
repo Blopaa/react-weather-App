@@ -24,7 +24,7 @@ const SearchInput = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" onChange={handleChange} value={city} name="city" autoComplete="off" />
+            <input type="text" onChange={handleChange} value={city} name="city" autoComplete="off" className="input__default"/>
         </form>
     )
 }
