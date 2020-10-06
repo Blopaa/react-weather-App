@@ -4,7 +4,7 @@ const getDataEvery24h = (data) => {
 
   let newData = [];
 
-  for (let i = parseInt(0); i < weatherData.length; i += 8) {
+  for (let i = parseInt(8); i < weatherData.length; i += 8) {
     newData.push(data.list[i])
   }
 

@@ -1,39 +1,54 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { useState } from "react";
 import getDataEvery24h from "../../helpers/getDataEvery24h";
+import getDataFirstDay from "../../helpers/getDataFirstDay";
 import useFetch from "../../hooks/useFetch";
-import SearchInput from "./SearchInput";
+import { CityContext } from "./CityContext";
 import WeatherCard from "./WeatherCard";
+import WeatherFirstDay from "./WeatherFirstDay";
 
 const WeatherScreen = () => {
+  const {city} = useContext(CityContext)
+  const [FirstDay, setFirstDay] = useState({});
   const [newdata, setData] = useState([]);
-  const [state, setState] = useState("new york");
   const { data, loading } = useFetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${state}&units=metric&appid=${process.env.REACT_APP_WEATHER_TOKEN}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_TOKEN}`
   );
 
   const dataop = useCallback(() => {
     return !loading && getDataEvery24h(data);
   }, [data, loading]);
 
+  const firstDay = useCallback(() => {
+    return !loading && getDataFirstDay(data);
+  }, [data, loading]);
+
   useEffect(() => {
     const weatherData = dataop();
     setData(weatherData);
-  }, [dataop, data]);
+  }, [dataop]);
 
-  const handleSearch = (city) => {
-    setState(city);
-  };
+  useEffect(() => {
+    const firstDaydata = firstDay();
+    setFirstDay(firstDaydata);
+  }, [firstDay])
 
   return (
     <div>
-      <SearchInput handleSearch={handleSearch} />
-      {newdata &&
-        newdata.map((d) => {
-          return(
-            <WeatherCard key={d.dt} dateP={d.dt_txt} cityName={data.city.name} data={d}/>
-          )
-        })}
+      <div className="weather__cards-container">
+        <WeatherFirstDay day={FirstDay}/>
+        {newdata &&
+          newdata.map((d) => {
+            return (
+              <WeatherCard
+                key={d.dt}
+                dateP={d.dt_txt}
+                cityName={data.city.name}
+                data={d}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };

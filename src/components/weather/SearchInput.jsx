@@ -1,7 +1,11 @@
 import React from 'react'
+import { useContext } from 'react'
 import useInput from '../../hooks/useInput'
+import { CityContext } from './CityContext'
 
-const SearchInput = ({handleSearch}) => {
+const SearchInput = () => {
+
+    const {setCity} = useContext(CityContext)
 
     const [values, handleChange] = useInput({
         city: ''
@@ -15,7 +19,7 @@ const SearchInput = ({handleSearch}) => {
             return
         }
 
-        handleSearch(city)
+        setCity(city)
     }
 
     return (
