@@ -3,7 +3,7 @@ import SearchInput from '../weather/SearchInput'
 
 const Navbar = () => {
     return (
-        <div className="navbar__container mb-5">
+        <div className="navbar__container">
             <SearchInput/>
         </div>
     )

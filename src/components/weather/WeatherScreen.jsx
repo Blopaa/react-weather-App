@@ -25,7 +25,7 @@ const WeatherScreen = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div>
         {newdata && <WeatherActual data={newdata[0]} />}
         <div className="weather__cards-container">

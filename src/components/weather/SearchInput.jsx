@@ -2,7 +2,6 @@ import React from "react";
 import { useContext } from "react";
 import useInput from "../../hooks/useInput";
 import { CityContext } from "./CityContext";
-import Swal from 'sweetalert2';
 
 const SearchInput = () => {
   const { setCity } = useContext(CityContext);
@@ -21,11 +20,11 @@ const SearchInput = () => {
 
     setCity(city);
     reset();
-    Swal.fire('Saved', city + ' has been searched', 'success');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit}>
       <input
         type="text"
         onChange={handleChange}
@@ -35,6 +34,7 @@ const SearchInput = () => {
         className="input__default"
       />
     </form>
+    </div>
   );
 };
 
