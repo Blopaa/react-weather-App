@@ -45,7 +45,7 @@ const WeatherScreen = () => {
               <WeatherCard
                 key={d.dt}
                 dateP={d.dt_txt}
-                cityName={data.city.name}
+                cityName={city}
                 data={d}
               />
             );
