@@ -4,15 +4,13 @@
 }
 
 .weather__firstDay-container {
-  display: flex;
-  justify-content: space-around;
   margin-top: 90px;
   background-color: $dark-secondary;
   width: 100vw;
   height: 90vh;
   box-shadow: 0px 4px 10px rgba(33, 62, 59, 0.35);
 
-  li{
+  li {
     color: $secondary;
     list-style: none;
     font-family: Roboto;
@@ -24,7 +22,55 @@
   }
 }
 
-.weather__actualUl{
+.weather__firstDay-scontainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.weather__firstDay-moreData {
+  display: flex;
+  justify-content: space-around;
+  li {
+    color: $dark-secondary;
+    margin: 40px;
+  }
+}
+
+.weather__firstDay-windContainewr {
+  display: flex;
+  background-color: $secondary;
+  border-radius: 5px;
+  width: 45%;
+  height: 20vh;
+  color: $dark-secondary;
+  transition: all .4s;
+
+  &:hover {
+    box-shadow: 0px 4px 10px rgba(33, 62, 59, 0.35);
+    background-color: darken($color: $secondary, $amount: 5);
+  }
+}
+
+.weather__firstDay-temperatureContainewr {
+  display: flex;
+  background-color: $secondary;
+  border-radius: 5px;
+  width: 45%;
+  height: 20vh;
+  color: $dark-secondary;
+  transition: all .4s;
+
+  &:hover {
+    box-shadow: 0px 4px 10px rgba(33, 62, 59, 0.35);
+    background-color: darken($color: $secondary, $amount: 5);
+  }
+}
+
+.weather__firstDay-p {
+  margin-left: 30px;
+}
+
+.weather__actualUl {
   margin-top: 90px;
 }
 
@@ -81,6 +127,10 @@
 }
 
 .weather__card-time-place-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-left: 36px;
   line-height: 46px;
 }

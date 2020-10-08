@@ -24,7 +24,7 @@ const SearchInput = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="form__default" onSubmit={handleSubmit}>
       <input
         type="text"
         onChange={handleChange}
