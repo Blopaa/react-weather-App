@@ -22,7 +22,7 @@ const SearchInput = () => {
     localStorage.setItem('city', city)
 
     setTimeout(() => {
-      setCity(city);
+      setCity(city.toLowerCase());
       setLoading(false)
     }, 500)
     reset();

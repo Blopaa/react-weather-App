@@ -18,7 +18,7 @@ const WeatherActual = ({ data }) => {
             {data && (
               <>
                 <p className="actualP" style={{ fontSize: "50px" }}>
-                  {city}, at {weatherDate.format("LT")}
+                  {city}, in a while
                 </p>
                 <p className="weather__card-Actualday">
                   {weatherDate.format("D")}
