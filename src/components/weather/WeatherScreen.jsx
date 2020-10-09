@@ -47,7 +47,7 @@ const WeatherScreen = () => {
               })}
           </div>
         </div>
-      )}}
+      )}
     </div>
   );
 };
