@@ -4,6 +4,7 @@ import getDataEvery24h from "../../helpers/getDays";
 import useFetch from "../../hooks/useFetch";
 import { CityContext } from "../context/CityContext";
 import Navbar from "../header/Navbar";
+import Nothing from "../nothing/Nothing";
 import WeatherActual from "./WeatherActual";
 import WeatherCard from "./WeatherCard";
 
@@ -21,27 +22,32 @@ const WeatherScreen = () => {
   useEffect(() => {
     const weatherData = dataop();
     setData(weatherData);
+    console.log(newdata);
   }, [dataop]);
 
   return (
     <div>
-      <Navbar/>
-      <div>
-        {newdata && <WeatherActual data={newdata[0]} />}
-        <div className="weather__cards-container">
-          {newdata &&
-            newdata.slice(1, 5).map((d) => {
-              return (
-                <WeatherCard
-                  key={d.dt}
-                  dateP={d.dt_txt}
-                  cityName={city}
-                  data={d}
-                />
-              );
-            })}
+      <Navbar />
+      {newdata.length === 0 ? (
+        <Nothing />
+      ) : (
+        <div>
+          {newdata && <WeatherActual data={newdata[0]} />}
+          <div className="weather__cards-container">
+            {newdata &&
+              newdata.slice(1, 5).map((d) => {
+                return (
+                  <WeatherCard
+                    key={d.dt}
+                    dateP={d.dt_txt}
+                    cityName={city}
+                    data={d}
+                  />
+                );
+              })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
