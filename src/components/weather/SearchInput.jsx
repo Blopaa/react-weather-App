@@ -1,10 +1,10 @@
 import React from "react";
 import { useContext } from "react";
 import useInput from "../../hooks/useInput";
-import { CityContext } from "../context/CityContext";
+import { WeatherContext } from "../context/WeatherContext";
 
 const SearchInput = () => {
-  const { setCity } = useContext(CityContext);
+  const { setCity, setLoading } = useContext(WeatherContext);
 
   const [values, handleChange, reset] = useInput({
     city: "",
@@ -13,6 +13,7 @@ const SearchInput = () => {
   const { city } = values;
 
   const handleSubmit = (e) => {
+    setLoading(true)
     e.preventDefault();
     if (city.length <= 0) {
       return;
@@ -20,7 +21,10 @@ const SearchInput = () => {
 
     localStorage.setItem('city', city)
 
-    setCity(city);
+    setTimeout(() => {
+      setCity(city);
+      setLoading(false)
+    }, 500)
     reset();
   };
 

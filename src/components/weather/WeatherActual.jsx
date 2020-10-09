@@ -3,14 +3,12 @@ import moment from "moment";
 import { useContext } from "react";
 
 import Icons from "../icons/Icons";
-import { CityContext } from "../context/CityContext";
+import { WeatherContext } from "../context/WeatherContext";
 
 const WeatherActual = ({ data }) => {
-  const { city } = useContext(CityContext);
+  const { city } = useContext(WeatherContext);
   const clime = data && data.weather && data.weather[0].main;
   const weatherDate = data && data.weather && moment(data.dt_txt);
-
-  console.log(data);
 
   return (
     <div className="weather__firstDay-container">

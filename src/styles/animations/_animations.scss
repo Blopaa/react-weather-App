@@ -10,3 +10,27 @@
         opacity: 1;
     }
 }
+
+.loading {
+    width: 70px;
+    height: 70px;
+    border: 10px solid $primary;
+    border-radius: 50%;
+    border-top: 10px solid $shadow;
+    animation-name: girar;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes girar {
+    0%{
+      transform: rotate(0deg);
+    }
+    50% {
+      border-left: 10px solid $shadow;
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  

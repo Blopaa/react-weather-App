@@ -1,0 +1,9 @@
+.loading__container{
+    position: fixed;
+    display: flex;
+    background-color: $dark-secondary;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}

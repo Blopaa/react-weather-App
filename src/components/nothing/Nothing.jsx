@@ -1,9 +1,9 @@
 import React from 'react'
 import { useContext } from 'react'
-import { CityContext } from '../context/CityContext'
+import {WeatherContext } from '../context/WeatherContext'
 
 const Nothing = () => {
-    const {city} = useContext(CityContext)
+    const {city} = useContext(WeatherContext)
     return (
         <div className="nothing__container">
             <div>

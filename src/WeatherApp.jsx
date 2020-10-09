@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { CityContext } from './components/context/CityContext'
+import { WeatherContext } from './components/context/WeatherContext'
 
 import WeatherScreen from './components/weather/WeatherScreen'
 import './styles/styles.scss'
@@ -8,12 +8,13 @@ import './styles/styles.scss'
 const WeatherApp = () => {
 
     const [city, setCity] = useState(localStorage.getItem('city') ? localStorage.getItem('city') : 'london')
+    const [loading, setLoading] = useState(false)
 
     return (
         <div>
-            <CityContext.Provider value={{city, setCity}}>
+            <WeatherContext.Provider value={{city, setCity, loading, setLoading}}>
             <WeatherScreen/>
-            </CityContext.Provider>
+            </WeatherContext.Provider>
         </div>
     )
 }

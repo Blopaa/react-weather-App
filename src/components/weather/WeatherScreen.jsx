@@ -2,33 +2,33 @@ import React, { useCallback, useContext, useEffect } from "react";
 import { useState } from "react";
 import getDataEvery24h from "../../helpers/getDays";
 import useFetch from "../../hooks/useFetch";
-import { CityContext } from "../context/CityContext";
+import { WeatherContext } from "../context/WeatherContext";
 import Navbar from "../header/Navbar";
+import Loading from "../loading/Loading";
 import Nothing from "../nothing/Nothing";
 import WeatherActual from "./WeatherActual";
 import WeatherCard from "./WeatherCard";
 
 const WeatherScreen = () => {
-  const { city } = useContext(CityContext);
+  const { city, loading } = useContext(WeatherContext);
   const [newdata, setData] = useState([]);
-  const { data, loading } = useFetch(
+  const { data } = useFetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_TOKEN}`
   );
 
   const dataop = useCallback(() => {
-    return !loading && getDataEvery24h(data);
-  }, [data, loading]);
+    return data.cod === "200" && getDataEvery24h(data);
+  }, [data]);
 
   useEffect(() => {
     const weatherData = dataop();
     setData(weatherData);
-    console.log(newdata);
   }, [dataop]);
 
   return (
     <div>
       <Navbar />
-      {newdata.length === 0 ? (
+      {loading ? <Loading/> : data.cod === "404" ? (
         <Nothing />
       ) : (
         <div>
@@ -47,7 +47,7 @@ const WeatherScreen = () => {
               })}
           </div>
         </div>
-      )}
+      )}}
     </div>
   );
 };
