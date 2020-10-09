@@ -1,8 +1,9 @@
 import React from "react";
 import moment from "moment";
 import { useContext } from "react";
-import { CityContext } from "./CityContext";
+
 import Icons from "../icons/Icons";
+import { CityContext } from "../context/CityContext";
 
 const WeatherActual = ({ data }) => {
   const { city } = useContext(CityContext);

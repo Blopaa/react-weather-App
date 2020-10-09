@@ -2,8 +2,8 @@ import React, { useCallback, useContext, useEffect } from "react";
 import { useState } from "react";
 import getDataEvery24h from "../../helpers/getDays";
 import useFetch from "../../hooks/useFetch";
+import { CityContext } from "../context/CityContext";
 import Navbar from "../header/Navbar";
-import { CityContext } from "./CityContext";
 import WeatherActual from "./WeatherActual";
 import WeatherCard from "./WeatherCard";
 

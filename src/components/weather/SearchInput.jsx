@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import useInput from "../../hooks/useInput";
-import { CityContext } from "./CityContext";
+import { CityContext } from "../context/CityContext";
 
 const SearchInput = () => {
   const { setCity } = useContext(CityContext);
@@ -17,6 +17,8 @@ const SearchInput = () => {
     if (city.length <= 0) {
       return;
     }
+
+    localStorage.setItem('city', city)
 
     setCity(city);
     reset();
